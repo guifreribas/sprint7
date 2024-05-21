@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary-color: #6C6C6C;
+  --secondary-color: #0A0B0B;
+  --tertiary-color: #F0F0F0;
+  --quaternary-color: #151515;
+
+  --blue: #2461B5;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: Helvetica, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
