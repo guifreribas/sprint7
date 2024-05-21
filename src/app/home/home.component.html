@@ -9,16 +9,20 @@
 </header>
 <nav>
   <a routerLink="/">Home</a>
-  <a routerLink="/starships" class="active">Starships</a>
+  <a routerLink="/starships" class="active" (click)="selectStarship(null)">Starships</a>
 </nav>
 
 
+@if(!starship().name){
 <article class="starships">
   @for(starship of starshipsData; track starship.name){
-  <article class="starship">
+  <article class="starship" (click)="selectStarship(starship)">
     <h3>{{starship.name}}</h3>
     <p>{{starship.model}}</p>
   </article>
   }
-
 </article>
+}
+@else{
+<app-starship [starship]="starship()"></app-starship>
+}
