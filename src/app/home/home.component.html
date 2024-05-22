@@ -9,14 +9,14 @@
 </header>
 <nav>
   <a routerLink="/">Home</a>
-  <a routerLink="/starships" class="active" (click)="selectStarship(null)">Starships</a>
+  <a routerLink="/starships" class="active" (click)="onSelectStarship(null)">Starships</a>
 </nav>
 
 
 @if(!starship().name){
 <article class="starships">
   @for(starship of starshipsData; track starship.name){
-  <article class="starship" (click)="selectStarship(starship)">
+  <article class="starship" (click)="onSelectStarship(starship)">
     <h3>{{starship.name}}</h3>
     <p>{{starship.model}}</p>
   </article>

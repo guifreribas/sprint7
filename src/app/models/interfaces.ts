@@ -24,4 +24,6 @@ export interface StarShip {
   created: string;
   edited: string;
   url: string;
+  imgUrl?: string;
+  index?: string;
 }

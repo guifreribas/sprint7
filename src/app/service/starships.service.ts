@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
+import { StarShip } from '../models/interfaces';
 
-const BASE_URL = 'https://swapi.dev/api/starships';
+// const BASE_URL = 'https://swapi.dev/api/starships';
 @Injectable({
   providedIn: 'root',
 })
@@ -27,9 +28,16 @@ export class StarshipsService {
     edited: '',
     url: '',
   };
+  public starship = signal<StarShip>(this.starshipInit);
 
   constructor() {}
   getStarships(page: number = 1): any {
-    return this.http.get(`${BASE_URL}?page=${page}`);
+    return this.http.get(`https://swapi.dev/api/starships?page=${page}`);
+  }
+
+  getStarshipImage(id: string): any {
+    return this.http.get(
+      `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`
+    );
   }
 }
