@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { StarShip } from '../models/interfaces';
 
-// const BASE_URL = 'https://swapi.dev/api/starships';
 @Injectable({
   providedIn: 'root',
 })
