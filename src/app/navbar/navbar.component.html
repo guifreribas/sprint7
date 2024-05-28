@@ -1,0 +1,14 @@
+<header>
+  <div class="logo">
+    <img src="assets/star_wars.svg" alt="Star Wars logo" />
+  </div>
+  <section class="auth">
+    <a href="">Log in</a>
+    <a href="">Sign up</a>
+  </section>
+</header>
+<nav>
+  <a routerLink="/" [ngClass]="{'active': navbarService.currentUrl() === '/'}">Home</a>
+  <a routerLink="/starships" [ngClass]="{'active': navbarService.currentUrl() === '/starships'}"
+    (click)="onSelectStarship(null)">Starships</a>
+</nav>

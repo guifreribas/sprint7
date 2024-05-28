@@ -1,0 +1,55 @@
+a {
+  text-transform: uppercase;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+
+  .logo {
+    width: fit-content;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+  }
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.auth {
+  position: absolute;
+  right: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: var(--quaternary-color) 2px solid;
+  color: rgba(255, 255, 255, 0.6);
+
+  a {
+    padding: 8px 16px;
+    border-bottom: 2px solid transparent;
+    // border: var(--quaternary-color) 2px solid;
+
+    &.active {
+      color: #fff;
+      border-bottom: 2px solid var(--blue);
+    }
+  }
+}

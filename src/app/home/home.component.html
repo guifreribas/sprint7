@@ -1,31 +1,13 @@
-<header>
-  <div class="logo">
-    <img src="assets/star_wars.svg" alt="Star Wars logo" />
-  </div>
-  <section class="auth">
-    <a href="">Log in</a>
-    <a href="">Sign up</a>
-  </section>
-</header>
-<nav>
-  <a routerLink="/">Home</a>
-  <a routerLink="/starships" class="active" (click)="onSelectStarship(null)">Starships</a>
-</nav>
-
-
-@if(!starship().name){
-<article #starshipsContainer class="starships" appInfinityScroll (scrolled)="onScroll()">
-  @for(starship of starshipsData; track starship.name){
-  <article class="starship" (click)="onSelectStarship(starship)">
-    <h3>{{starship.name}}</h3>
-    <p>{{starship.model}}</p>
+<article class="home">
+  <article class="principalBanner">
+    <img class="principalBanner__img"
+      src="https://lumiere-a.akamaihd.net/v1/images/phantom-menace-ferguson-onesheet-final-empirestrap_arti_e95a79c8.jpeg?region=0,0,1600,900"
+      alt="Phantom menace in the Empire Strip" />
+    <section class="info">
+      <h1 class="info__title">Phantom Menace Returns to Theaters</h1>
+      <p class="info__description">The tickets are available for purchase on the official website.</p>
+      <button class="info__btn info__btn--readMore">Read More</button>
+      <button class="info__btn info__btn--interveiew">Interview</button>
+    </section>
   </article>
-  }
-  @empty {
-  <div>No starships found</div>
-  }
 </article>
-}
-@else{
-<app-starship [starship]="starship()"></app-starship>
-}
