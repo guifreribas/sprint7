@@ -1,0 +1,26 @@
+<article class="modal">
+  <article class="login">
+    <mat-icon class="close-icon" (click)="onClose()">close</mat-icon>
+    <h2>Create an account</h2>
+    <p>Introduce your email and password to create an account</p>
+    <form action="" class="login__form" [formGroup]="loginForm" (submit)="onSubmit($event)">
+      @if(authService.errorMessage()){
+      <p class="errorMessage">{{authService.errorMessage()}}</p>
+      }
+      <input class="login__input " [ngClass]="{'login__input--isError': authService.errorMessage()}" type="text"
+        placeholder="Email" name="email" id="email" formControlName="email" />
+      <input class="login__input " [ngClass]="{'login__input--isError': authService.errorMessage()}" type="password"
+        placeholder="Password" formControlName="password" />
+      <input class="login__input " [ngClass]="{'login__input--isError': authService.errorMessage()}" type="password"
+        placeholder="Repeat Password" formControlName="repeatPassword" />
+      <button type="submit">Login</button>
+    </form>
+    <div class="square"></div>
+    <footer>
+      <p class="title">Star Wars is part of The Walt Disney Family of Companies.</p>
+      <p class="description">MyDisney lets you seamlessly log in to services and experiences across The Walt Disney
+        Family of Companies,
+        such as Disney+, ESPN, Walt Disney World, and more.</p>
+    </footer>
+  </article>
+</article>

@@ -2,6 +2,19 @@ a {
   text-transform: uppercase;
 }
 
+button {
+  border: none;
+  background: none;
+  color: inherit;
+  text-transform: uppercase;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    color: #FADE4B;
+    text-shadow: 0 0 2px #FFF;
+  }
+}
+
 header {
   display: flex;
   align-items: center;
@@ -50,6 +63,11 @@ nav {
     &.active {
       color: #fff;
       border-bottom: 2px solid var(--blue);
+    }
+
+    &.disabled {
+      color: rgba(255, 255, 255, 0.6);
+      cursor: not-allowed;
     }
   }
 }

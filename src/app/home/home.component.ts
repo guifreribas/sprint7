@@ -26,37 +26,10 @@ export class HomeComponent implements OnInit {
   private readonly starshipsService = inject(StarshipsService);
   // private readonly starshipsApiService = inject(StarshipApiService);
   public readonly starship = this.starshipsService.starship;
-  // public starshipsData: StarShip[] = [];
-  // private page: number = 1;
-  // private isLoading: boolean = false;
-  // private hasMore: boolean = true;
+
   constructor() {}
 
-  ngOnInit(): void {
-    // this.fetchStarship();
-  }
-
-  // onScroll(): void {
-  //   if (!this.isLoading && this.hasMore) {
-  //     this.fetchStarship(this.page);
-  //   }
-  // }
-
-  // public fetchStarship(page: number = 1): void {
-  //   this.isLoading = true;
-  //   this.starshipsApiService.getStarships(page).subscribe({
-  //     next: (data: StarShipResponse) => {
-  //       this.starshipsData = this.starshipsData.concat(data.results);
-  //       this.hasMore = !!data.next;
-  //       this.page++;
-  //       this.isLoading = false;
-  //     },
-  //     error: (error: HttpErrorResponse) => {
-  //       console.error('Error fetching starships', error);
-  //       this.isLoading = false;
-  //     },
-  //   });
-  // }
+  ngOnInit(): void {}
 
   onSelectStarship(starship: StarShip | null): void {
     this.starshipsService.onSelectStarship(starship);
