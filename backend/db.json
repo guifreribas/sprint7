@@ -22,6 +22,11 @@
       "password": "$2a$10$mQiSxDDkGjqWVldSTJN6TexEeaegf68RtzKMpQKSm7T2eIhNGnXLu",
       "repeatPassword": "123456",
       "id": 4
+    },
+    {
+      "email": "test6@mail.com",
+      "password": "$2a$10$QlqKOS/325GygthLyyq2te4YN0xVO4F4JN7k0E18dl52A7zdZb5gG",
+      "id": 5
     }
   ]
 }
