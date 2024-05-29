@@ -3,12 +3,18 @@
     <img src="assets/star_wars.svg" alt="Star Wars logo" />
   </div>
   <section class="auth">
-    <a href="">Log in</a>
-    <a href="">Sign up</a>
+    @if(!authService.isLogged()){
+    <a href="login" (click)="onLogin()">Log in</a>
+    <a href="register" (click)="onRegister()">Sign up</a>
+    }
+    @else{
+    <button (click)="onLogout()">Logout</button>
+    }
   </section>
 </header>
 <nav>
   <a routerLink="/" [ngClass]="{'active': navbarService.currentUrl() === '/'}">Home</a>
-  <a routerLink="/starships" [ngClass]="{'active': navbarService.currentUrl() === '/starships'}"
+  <a routerLink="/starships"
+    [ngClass]="{'active': navbarService.currentUrl() === '/starships', 'disabled': !authService.isLoggedIn()}"
     (click)="onSelectStarship(null)">Starships</a>
 </nav>

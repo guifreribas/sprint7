@@ -27,3 +27,8 @@ export interface StarShip {
   imgUrl?: string;
   index?: string;
 }
+
+export interface ResponseHandle {
+  success: any | null;
+  error: any | null;
+}
