@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule, Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -17,6 +18,8 @@ import { CommonModule, Location } from '@angular/common';
 })
 export class RegisterComponent {
   private _location = inject(Location);
+  private route = inject(ActivatedRoute);
+  public router = inject(Router);
   public authService = inject(AuthService);
   public loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -50,6 +53,8 @@ export class RegisterComponent {
         this.authService.isRegistering = false;
         localStorage.setItem('token', res.accessToken);
         this.authService.errorMessage.set('');
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.router.navigate([returnUrl]);
       },
       error: (err) => {
         this.authService.isErrorOnLogin.set(true);
