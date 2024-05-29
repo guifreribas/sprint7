@@ -43,11 +43,15 @@ export class RegisterComponent {
   }
 
   onRegister(data: any): void {
-    if (this.loginForm.value.password !== this.loginForm.value.repeatPassword) {
+    if (data.password !== data.repeatPassword) {
       this.authService.errorMessage.set('Passwords do not match');
       return;
     }
-    this.authService.onRegister(data).subscribe({
+    const dataToRegister = {
+      email: data.email,
+      password: data.password,
+    };
+    this.authService.onRegister(dataToRegister).subscribe({
       next: (res) => {
         this.authService.isLogged.set(true);
         this.authService.isRegistering = false;
