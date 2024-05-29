@@ -45,7 +45,6 @@ export class LoginComponent {
         this.authService.isLoggingIn = false;
         localStorage.setItem('token', res.accessToken);
         const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-        console.log(returnUrl);
         this.router.navigate([returnUrl]);
       },
       error: (err) => {
