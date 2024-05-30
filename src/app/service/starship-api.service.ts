@@ -17,4 +17,8 @@ export class StarshipApiService {
       `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`
     );
   }
+
+  getStarshipPilotsImages() {
+    return this.http.get(`https://swapi.dev/api/starships/1/pilots/images`);
+  }
 }

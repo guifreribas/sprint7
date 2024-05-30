@@ -1,0 +1,17 @@
+.carrusel {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 16px;
+  overflow: auto;
+}
+
+
+h4 {
+  color: #fff;
+}

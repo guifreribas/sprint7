@@ -1,0 +1,5 @@
+<article class="carrusel">
+  @for(pilot of starshipsService.starship().pilotsData; track pilot.index){
+  <app-pilot [pilot]="pilot"></app-pilot>
+  }
+</article>

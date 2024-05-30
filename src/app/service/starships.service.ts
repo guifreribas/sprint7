@@ -1,14 +1,22 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { StarShip } from '../models/interfaces';
-import { extractIndexFromUrl } from '../helpers/extractIndex';
+import { Character, PilotsData, StarShip } from '../models/interfaces';
+import {
+  extractIndexFromStarship,
+  extractIndexFromUrl,
+} from '../helpers/extractIndex';
 import { StarshipApiService } from './starship-api.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { PilotsService } from './pilots.service';
+import { ConstantsService } from './constants.service';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StarshipsService {
   private readonly starshipApiService = inject(StarshipApiService);
+  private readonly constantsService = inject(ConstantsService);
+  private pilotService = inject(PilotsService);
   public starshipInit = {
     name: '',
     model: '',
@@ -28,12 +36,13 @@ export class StarshipsService {
     created: '',
     edited: '',
     url: '',
+    pilotsData: [],
   };
   public starship = signal<StarShip>(this.starshipInit);
 
   constructor() {}
 
-  onSelectStarship(starship: StarShip | null): void {
+  async onSelectStarship(starship: StarShip | null): Promise<void> {
     if (!starship) {
       this.starship.set(this.starshipInit);
       return;
@@ -41,28 +50,57 @@ export class StarshipsService {
     const oldStarship = { ...starship };
 
     if (oldStarship.name) {
-      const index = extractIndexFromUrl(oldStarship);
+      const index = extractIndexFromStarship(oldStarship);
       if (!index) {
-        oldStarship.imgUrl =
-          'https://www.interactive.org/images/games_developers/no_image_available_sm.jpg';
+        oldStarship.imgUrl = this.constantsService.IMG_FALLBACK_URL;
         return;
       }
-
+      oldStarship.index = index;
       this.starshipApiService.getStarshipImage(index).subscribe({
-        next: (data: any) => data,
         error: (error: HttpErrorResponse) =>
           this.setUrlImg(oldStarship, index, error),
       });
-      oldStarship.index = index;
+      if (oldStarship.pilots.length > 0) {
+        const pilotData = await this.getPilotData(oldStarship);
+        oldStarship.pilotsData = pilotData;
+      }
     }
+
     this.starship.set(oldStarship);
   }
 
   setUrlImg(starship: StarShip, index: string, error: any): void {
     const imgUrl =
       error.status === 200
-        ? `https://starwars-visualguide.com/assets/img/starships/${index}.jpg`
-        : 'https://www.interactive.org/images/games_developers/no_image_available_sm.jpg';
+        ? `${this.constantsService.IMG_STARSHIPS_BASE_URL}${index}.jpg`
+        : this.constantsService.IMG_FALLBACK_URL;
     starship.imgUrl = imgUrl;
+  }
+
+  async getPilotData(starship: StarShip): Promise<PilotsData[]> {
+    let index = '';
+    let imgUrl = '';
+    let pilot: Character = this.pilotService.pilotsInit;
+    const pilotsData: PilotsData[] = [];
+    for (const pilotUrl of starship.pilots) {
+      index = extractIndexFromUrl(pilotUrl) || '';
+      imgUrl = !index
+        ? this.constantsService.IMG_FALLBACK_URL
+        : `${this.constantsService.IMG_CHARACTERS_BASE_URL}${index}.jpg`;
+
+      if (index) {
+        try {
+          pilot = await lastValueFrom(this.pilotService.getPilot(index));
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      pilotsData.push({
+        index,
+        imgUrl,
+        pilot,
+      });
+    }
+    return pilotsData;
   }
 }
