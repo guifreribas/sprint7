@@ -27,6 +27,7 @@ export interface StarShip {
   imgUrl?: string;
   index?: string;
   pilotsData: PilotsData[];
+  filmsData: FilmData[];
 }
 
 export interface PilotsData {
@@ -57,4 +58,27 @@ export interface Character {
   created: string;
   edited: string;
   url: string;
+}
+
+export interface Film {
+  title: string;
+  episode_id: number;
+  opening_crawl: string;
+  director: string;
+  producer: string;
+  release_date: string;
+  characters: string[];
+  planets: string[];
+  starships: string[];
+  vehicles: string[];
+  species: string[];
+  created: string;
+  edited: string;
+  url: string;
+}
+
+export interface FilmData {
+  index: string;
+  imgUrl: string;
+  film: Film;
 }

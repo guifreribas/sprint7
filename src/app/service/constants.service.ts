@@ -11,4 +11,6 @@ export class ConstantsService {
     'https://starwars-visualguide.com/assets/img/starships/';
   public readonly IMG_CHARACTERS_BASE_URL =
     'https://starwars-visualguide.com/assets/img/characters/';
+  public readonly IMG_FILMS_BASE_URL =
+    'https://starwars-visualguide.com/assets/img/films/';
 }
