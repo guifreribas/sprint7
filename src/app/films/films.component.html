@@ -1,0 +1,5 @@
+<article class="carrusel">
+  @for(film of starshipsService.starship().filmsData; track film.index ){
+  <app-film [film]="film"></app-film>
+  }
+</article>

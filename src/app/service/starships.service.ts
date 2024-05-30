@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { PilotsService } from './pilots.service';
 import { ConstantsService } from './constants.service';
 import { lastValueFrom } from 'rxjs';
+import { FilmsService } from './films.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,7 @@ import { lastValueFrom } from 'rxjs';
 export class StarshipsService {
   private readonly starshipApiService = inject(StarshipApiService);
   private readonly constantsService = inject(ConstantsService);
+  private readonly filmsService = inject(FilmsService);
   private pilotService = inject(PilotsService);
   public starshipInit = {
     name: '',
@@ -37,6 +39,7 @@ export class StarshipsService {
     edited: '',
     url: '',
     pilotsData: [],
+    filmsData: [],
   };
   public starship = signal<StarShip>(this.starshipInit);
 
@@ -61,8 +64,12 @@ export class StarshipsService {
           this.setUrlImg(oldStarship, index, error),
       });
       if (oldStarship.pilots.length > 0) {
-        const pilotData = await this.getPilotData(oldStarship);
+        const pilotData = await this.pilotService.getPilotData(oldStarship);
         oldStarship.pilotsData = pilotData;
+      }
+      if (oldStarship.films.length > 0) {
+        const filmData = await this.filmsService.getFilmData(oldStarship);
+        oldStarship.filmsData = filmData;
       }
     }
 
@@ -77,30 +84,30 @@ export class StarshipsService {
     starship.imgUrl = imgUrl;
   }
 
-  async getPilotData(starship: StarShip): Promise<PilotsData[]> {
-    let index = '';
-    let imgUrl = '';
-    let pilot: Character = this.pilotService.pilotsInit;
-    const pilotsData: PilotsData[] = [];
-    for (const pilotUrl of starship.pilots) {
-      index = extractIndexFromUrl(pilotUrl) || '';
-      imgUrl = !index
-        ? this.constantsService.IMG_FALLBACK_URL
-        : `${this.constantsService.IMG_CHARACTERS_BASE_URL}${index}.jpg`;
+  // async getPilotData(starship: StarShip): Promise<PilotsData[]> {
+  //   let index = '';
+  //   let imgUrl = '';
+  //   let pilot: Character = this.pilotService.pilotsInit;
+  //   const pilotsData: PilotsData[] = [];
+  //   for (const pilotUrl of starship.pilots) {
+  //     index = extractIndexFromUrl(pilotUrl) || '';
+  //     imgUrl = !index
+  //       ? this.constantsService.IMG_FALLBACK_URL
+  //       : `${this.constantsService.IMG_CHARACTERS_BASE_URL}${index}.jpg`;
 
-      if (index) {
-        try {
-          pilot = await lastValueFrom(this.pilotService.getPilot(index));
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      pilotsData.push({
-        index,
-        imgUrl,
-        pilot,
-      });
-    }
-    return pilotsData;
-  }
+  //     if (index) {
+  //       try {
+  //         pilot = await lastValueFrom(this.pilotService.getPilot(index));
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  //     }
+  //     pilotsData.push({
+  //       index,
+  //       imgUrl,
+  //       pilot,
+  //     });
+  //   }
+  //   return pilotsData;
+  // }
 }

@@ -10,17 +10,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './pilots.component.html',
   styleUrl: './pilots.component.scss',
 })
-export class PilotsComponent implements OnInit {
+export class PilotsComponent {
   public starshipsService = inject(StarshipsService);
-  public hasPilotData = signal(false);
-
-  ngOnInit(): void {
-    if (this.starshipsService.starship().pilotsData === undefined) {
-      this.hasPilotData.set(false);
-    } else {
-      this.hasPilotData.set(
-        this.starshipsService.starship().pilotsData.length > 0
-      );
-    }
-  }
 }

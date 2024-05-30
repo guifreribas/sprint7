@@ -1,0 +1,41 @@
+.pilot {
+  width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #22252A;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 2px rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: none;
+    background-color: rgba(var(--quaternary-color-rgb), 0.6);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid red;
+  }
+
+  h3 {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+
+    font-size: clamp(16px, 1.5vw, 24px);
+    font-weight: bold;
+    padding: 16px;
+    align-self: center;
+  }
+
+  p {
+    padding-bottom: 16px;
+  }
+
+
+}
