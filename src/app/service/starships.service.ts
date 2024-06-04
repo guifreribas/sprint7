@@ -83,31 +83,4 @@ export class StarshipsService {
         : this.constantsService.IMG_FALLBACK_URL;
     starship.imgUrl = imgUrl;
   }
-
-  // async getPilotData(starship: StarShip): Promise<PilotsData[]> {
-  //   let index = '';
-  //   let imgUrl = '';
-  //   let pilot: Character = this.pilotService.pilotsInit;
-  //   const pilotsData: PilotsData[] = [];
-  //   for (const pilotUrl of starship.pilots) {
-  //     index = extractIndexFromUrl(pilotUrl) || '';
-  //     imgUrl = !index
-  //       ? this.constantsService.IMG_FALLBACK_URL
-  //       : `${this.constantsService.IMG_CHARACTERS_BASE_URL}${index}.jpg`;
-
-  //     if (index) {
-  //       try {
-  //         pilot = await lastValueFrom(this.pilotService.getPilot(index));
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     }
-  //     pilotsData.push({
-  //       index,
-  //       imgUrl,
-  //       pilot,
-  //     });
-  //   }
-  //   return pilotsData;
-  // }
 }

@@ -37,7 +37,7 @@ export class FilmsService {
     let index = '';
     let imgUrl = '';
     let film: Film = this.filmInit;
-    const pilotsData: FilmData[] = [];
+    const filmsData: FilmData[] = [];
     for (const filmUrl of starship.films) {
       index = extractIndexFromUrl(filmUrl) || '';
       imgUrl = !index
@@ -51,12 +51,12 @@ export class FilmsService {
           console.log(error);
         }
       }
-      pilotsData.push({
+      filmsData.push({
         index,
         imgUrl,
         film,
       });
     }
-    return pilotsData;
+    return filmsData;
   }
 }
