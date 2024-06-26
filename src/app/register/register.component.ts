@@ -42,6 +42,14 @@ export class RegisterComponent {
   }
 
   onRegister(data: any): void {
+    if (this.loginForm.controls['email'].invalid) {
+      this.authService.errorMessage.set('Invalid email');
+      return;
+    }
+    if (this.loginForm.controls['password'].invalid) {
+      this.authService.errorMessage.set('Password is required');
+      return;
+    }
     if (data.password !== data.repeatPassword) {
       this.authService.errorMessage.set('Passwords do not match');
       return;
