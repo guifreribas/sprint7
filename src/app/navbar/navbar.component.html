@@ -27,15 +27,15 @@
 </header>
 
 <nav [ngClass]="{'open': menuOpen}">
-  <a routerLink="/" [ngClass]="{'active': navbarService.currentUrl() === '/'}">Home</a>
-  <a routerLink="/starships"
+  <a class="navLink" routerLink="/" [ngClass]="{'active': navbarService.currentUrl() === '/'}">Home</a>
+  <a class="navLink" routerLink="/starships"
     [ngClass]="{'active': navbarService.currentUrl() === '/starships', 'disabled': !authService.isLoggedIn()}"
     (click)="onSelectStarship(null)">Starships</a>
-  <a href="#">NEWS + FEATURES</a>
-  <a href="#">VIDEO</a>
-  <a href="#">FILMS</a>
-  <a href="#">DATABANK</a>
-  <a href="#">DISNEY+</a>
+  <a class="navLink" href="#">NEWS + FEATURES</a>
+  <a class="navLink" href="#">VIDEO</a>
+  <a class="navLink" href="#">FILMS</a>
+  <a class="navLink" href="#">DATABANK</a>
+  <a class="navLink" href="#">DISNEY+</a>
 
   <section class="auth-mobile">
     <div class="divider"></div>

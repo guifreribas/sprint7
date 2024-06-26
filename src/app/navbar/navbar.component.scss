@@ -104,6 +104,16 @@ header {
   }
 }
 
+.navLink {
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    text-shadow: 0 0 1px rgba(250, 222, 75, 1);
+    color: #FADE4B;
+  }
+}
+
 .auth {
   position: absolute;
   right: 48px;
