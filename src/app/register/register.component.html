@@ -8,11 +8,11 @@
       <p class="errorMessage">{{authService.errorMessage()}}</p>
       }
       <input class="login__input " [ngClass]="{'login__input--isError': authService.errorMessage()}" type="text"
-        placeholder="Email" name="email" id="email" formControlName="email" />
+        placeholder="Email" name="email" id="email" formControlName="email" autocomplete="email" />
       <input class="login__input " [ngClass]="{'login__input--isError': authService.errorMessage()}" type="password"
-        placeholder="Password" formControlName="password" />
+        placeholder="Password" formControlName="password" autocomplete="new-password" />
       <input class="login__input " [ngClass]="{'login__input--isError': authService.errorMessage()}" type="password"
-        placeholder="Repeat Password" formControlName="repeatPassword" />
+        placeholder="Repeat Password" formControlName="repeatPassword" autocomplete="new-password" />
       <button type="submit">Login</button>
     </form>
     <div class="square"></div>
