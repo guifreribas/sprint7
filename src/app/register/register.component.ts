@@ -32,7 +32,6 @@ export class RegisterComponent {
 
   onClose(): void {
     this._location.back();
-    // this.authService.isRegistering = false;
     this.authService.isErrorOnLogin.set(false);
     this.authService.errorMessage.set('');
   }

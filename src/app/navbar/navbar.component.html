@@ -1,20 +1,50 @@
 <header>
+  <div class="burger_menu" [ngClass]="!menuOpen ? 'active' : null" (click)="toggleMenu()">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+
+  <div class="close_menu" [ngClass]="menuOpen ? 'active' : null" (click)="toggleMenu()">
+    <div class="line1"></div>
+    <div class="line2"></div>
+  </div>
   <div class="logo">
     <img src="assets/star_wars.svg" alt="Star Wars logo" />
   </div>
+  <div class="logo2">
+    <img src="assets/star_wars2.png" alt="Star Wars logo plain" />
+  </div>
   <section class="auth">
     @if(!authService.isLogged()){
-    <a href="login" (click)="onLogin()">Log in</a>
-    <a href="register" (click)="onRegister()">Sign up</a>
+    <a href="login" class="authLink" (click)="onLogin()">Log in</a>
+    <a href="register" class="authLink" (click)="onRegister()">Sign up</a>
     }
-    @else{
-    <button (click)="onLogout()">Logout</button>
+    @else {
+    <button class="authLink" (click)="onLogout()">Logout</button>
     }
   </section>
 </header>
-<nav>
+
+<nav [ngClass]="{'open': menuOpen}">
   <a routerLink="/" [ngClass]="{'active': navbarService.currentUrl() === '/'}">Home</a>
   <a routerLink="/starships"
     [ngClass]="{'active': navbarService.currentUrl() === '/starships', 'disabled': !authService.isLoggedIn()}"
     (click)="onSelectStarship(null)">Starships</a>
+  <a href="#">NEWS + FEATURES</a>
+  <a href="#">VIDEO</a>
+  <a href="#">FILMS</a>
+  <a href="#">DATABANK</a>
+  <a href="#">DISNEY+</a>
+
+  <section class="auth-mobile">
+    <div class="divider"></div>
+    @if(!authService.isLogged()){
+    <a href="login" class="authLink-mobile" (click)="onLogin()">Log in</a>
+    <a href="register" class="authLink-mobile" (click)="onRegister()">Sign up</a>
+    }
+    @else {
+    <button class="authLink-mobile" (click)="onLogout()">Logout</button>
+    }
+  </section>
 </nav>

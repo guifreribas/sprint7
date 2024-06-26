@@ -1,7 +1,8 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, inject, Input, input } from '@angular/core';
 import { StarShip } from '../models/interfaces';
 import { PilotsComponent } from '../pilots/pilots.component';
 import { FilmsComponent } from '../films/films.component';
+import { StarshipsService } from '../service/starships.service';
 
 @Component({
   selector: 'app-starship',
@@ -11,5 +12,6 @@ import { FilmsComponent } from '../films/films.component';
   styleUrl: './starship.component.scss',
 })
 export class StarshipComponent {
+  public starshipsService = inject(StarshipsService);
   @Input() starship!: StarShip;
 }

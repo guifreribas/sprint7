@@ -32,20 +32,23 @@
     </section>
   </div>
 
-
+  @if(starshipsService.starship().pilotsData.length > 0){
   <div class="innerContainer">
     <h3>PILOTS</h3>
     <section class="starshipBanner">
       <app-pilots class="app-pilots"></app-pilots>
     </section>
   </div>
+  }
 
+  @if(starshipsService.starship().filmsData.length > 0){
   <div class="innerContainer">
     <h3>FILMS</h3>
     <section class="starshipBanner">
       <app-films class="app-pilots"></app-films>
     </section>
   </div>
+  }
 
 
 
