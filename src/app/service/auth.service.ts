@@ -28,7 +28,10 @@ export class AuthService {
     return this.http.post('http://localhost:3000/login', data).pipe(
       tap({
         next: () => this.isLogged.set(true),
-        error: () => this.isLogged.set(false),
+        error: (err) => {
+          this.errorMessage.set(err.error);
+          this.isLogged.set(false);
+        },
       })
     );
   }

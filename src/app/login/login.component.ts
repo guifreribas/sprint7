@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../service/auth.service';
 import {
@@ -39,6 +39,14 @@ export class LoginComponent {
   }
 
   onLogin(data: any): void {
+    if (this.loginForm.controls['email'].invalid) {
+      this.authService.errorMessage.set('Invalid email');
+      return;
+    }
+    if (this.loginForm.controls['password'].invalid) {
+      this.authService.errorMessage.set('Password is required');
+      return;
+    }
     this.authService.onLogin(data).subscribe({
       next: (res) => {
         this.authService.isLogged.set(true);

@@ -4,8 +4,11 @@
     <h2>Enter your credentials</h2>
     <p>You can use your email and password to login</p>
     <form action="" class="login__form" [formGroup]="loginForm" (submit)="onSubmit($event)">
-      @if(authService.isErrorOnLogin()){
+      <!-- @if(authService.isErrorOnLogin()){
       <p class="errorMessage">Email or password is incorrect</p>
+      } -->
+      @if(authService.errorMessage() || authService.isErrorOnLogin()){
+      <p class="errorMessage">{{authService.errorMessage()}}</p>
       }
       <input class="login__input " [ngClass]="{'login__input--isError': authService.isErrorOnLogin()}" type="text"
         placeholder="Email" name="email" id="email" formControlName="email" />
