@@ -4,29 +4,6 @@
       "email": "test@mail.com",
       "password": "$2a$10$E.NgGX9lzRZNR5VxN8BAX.ILFcdkY1PhQ6GWCqIiWnVGPtBi8.wwy",
       "id": 1
-    },
-    {
-      "email": "test2@mail.com",
-      "password": "$2a$10$4pxCtxSanYPycJZrcnVPO.SQNYcxq/A2k7vigpZVapa14mTFdbVUa",
-      "repeatPassword": "123456",
-      "id": 2
-    },
-    {
-      "email": "test3@mail.com",
-      "password": "$2a$10$8GjaYTqk6RJNGlIiQzE8T.RzdOeDlRxVhm6LnJwYEAI4gokWkcYZy",
-      "repeatPassword": "123456",
-      "id": 3
-    },
-    {
-      "email": "test5@mail.com",
-      "password": "$2a$10$mQiSxDDkGjqWVldSTJN6TexEeaegf68RtzKMpQKSm7T2eIhNGnXLu",
-      "repeatPassword": "123456",
-      "id": 4
-    },
-    {
-      "email": "test6@mail.com",
-      "password": "$2a$10$QlqKOS/325GygthLyyq2te4YN0xVO4F4JN7k0E18dl52A7zdZb5gG",
-      "id": 5
     }
   ]
 }

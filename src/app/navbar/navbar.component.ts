@@ -20,12 +20,17 @@ export class NavbarComponent implements OnInit {
   public authService = inject(AuthService);
   public loginResponse: ResponseHandle = { success: null, error: null };
   public registerResponse: ResponseHandle = { success: null, error: null };
+  public menuOpen = false;
 
   ngOnInit(): void {
     localStorage.getItem('token');
     if (localStorage.getItem('token')) {
       this.authService.isLogged.set(true);
     }
+  }
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
   }
 
   onSelectStarship(starship: any): void {
