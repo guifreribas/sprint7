@@ -1,14 +1,11 @@
 @if(!starship().name){
-<article #starshipsContainer class="starships" appInfinityScroll (scrolled)="onScroll()">
+<article #starshipsContainer class="starships" (scrolled)="onScroll()">
   @for(starship of starshipsData; track starship.name){
-  @defer (on viewport) {
   <article class="starship" (click)="onSelectStarship(starship)">
     <h3>{{starship.name}}</h3>
     <p>{{starship.model}}</p>
   </article>
-  } @placeholder {
-  <p>Loading...</p>
-  }
+
   }
   @empty {
   <div>No starships found</div>
