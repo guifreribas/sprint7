@@ -12,7 +12,7 @@ import { InfinityScrollDirective } from '../directives/infinity-scroll.directive
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [StarshipComponent, InfinityScrollDirective],
+  imports: [StarshipComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
